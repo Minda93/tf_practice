@@ -44,15 +44,28 @@ class MLP(object):
 
         self.model = Sequential()
 
+        """ limit GPU """
+        self.Limit_GPU_Memory(0.1)
+
         """ param """
         self.Set_Model_Param()
 
         """ build model """
         self.Build_Model()
     
+    def Limit_GPU_Memory(self,percent):
+        """ limit GPU mermory resource """
+        import tensorflow as tf
+        from keras.backend.tensorflow_backend import set_session
+
+        config = tf.ConfigProto()
+        config.gpu_options.per_process_gpu_memory_fraction = percent
+        set_session(tf.Session(config=config))
+
     def Set_Model_Param(self):
         """ layer """
-        self.unitH = 256
+        # self.unitH = 256
+        self.unitH = 1000
         self.input_dim = self.pre.imgSize
         self.initializerH = 'normal'
         self.activationH = 'relu'
@@ -71,7 +84,6 @@ class MLP(object):
         self.epoch = 10
         self.batchSize = 200
         self.verbose = 2 
-
     
     def Build_Model(self):
         """ hidden 1 """
@@ -122,10 +134,11 @@ class MLP(object):
         
         if(show):
             self.pre.Multi_Display_prediction(xTest,yTest,prediction,idx,num)
-            # self.Show_Confusion(yTest,prediction)
+            self.Show_Confusion(yTest,prediction)
 
     def Show_Confusion(self,yTest,prediction):
-        pd.crosstab(yTest,prediction,rownames=['label'],colnames=['predict'])
+        confusion = pd.crosstab(yTest,prediction,rownames=['label'],colnames=['predict'])
+        print(confusion)
         
 
     def Show_Train_Result(self,trainHistory,train,validation):
