@@ -4,6 +4,7 @@ import pandas as pd
 
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.layers import Dropout
 
 import matplotlib.pyplot as plt
 
@@ -70,6 +71,8 @@ class MLP(object):
         self.initializerH = 'normal'
         self.activationH = 'relu'
 
+        self.dropoutPercent = 0.5
+
         self.unitO = self.pre.classSize
         self.initializerO = 'normal'
         self.activationO = 'softmax'
@@ -92,7 +95,9 @@ class MLP(object):
                              input_dim = self.input_dim,\
                              kernel_initializer = self.initializerH,\
                              activation = self.activationH))
-        
+
+        """ reduce overfitting """
+        self.model.add(Dropout(self.dropoutPercent,name="dropout"))
         """ output """
         self.model.add(Dense(name="output",\
                              units = self.unitO,\
