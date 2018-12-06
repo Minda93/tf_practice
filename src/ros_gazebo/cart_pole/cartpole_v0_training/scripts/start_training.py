@@ -89,10 +89,10 @@ if __name__ == '__main__':
             nextState = ''.join(map(str, observation))
 
             # Make the algorithm learn based on the results
-            rospy.logwarn("############### state we were=>" + str(state))
-            rospy.logwarn("############### action that we took=>" + str(action))
-            rospy.logwarn("############### reward that action gave=>" + str(reward))
-            rospy.logwarn("############### State in which we will start nect step=>" + str(nextState))
+            #rospy.logwarn("############### state we were=>" + str(state))
+            #rospy.logwarn("############### action that we took=>" + str(action))
+            #rospy.logwarn("############### reward that action gave=>" + str(reward))
+            #rospy.logwarn("############### State in which we will start nect step=>" + str(nextState))
             qlearn.learn(state, action, reward, nextState)
 
             if not(done):
