@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''
     Training code made by Ricardo Tellez <rtellez@theconstructsim.com>
@@ -9,6 +9,7 @@ import gym
 import time
 import numpy
 import random
+from functools import reduce
 import time
 import qlearn
 from gym import wrappers
