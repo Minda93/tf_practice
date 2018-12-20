@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/FIRA.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+  <!-- <param name="race_goal" textfile="$(find turtlebot3_description)/race_goal/urdf/race_goal.urdf"/>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 3 -y 0 -z 0 -param race_goal -model race_goal" /> -->
+  <group ns="robot1">
+    <param name="tf_prefix" value="robot1_tf" />
+    <include file="$(find turtlebot3_gazebo)/launch/tb3.launch" >
+      <arg name="x_pos" default="0.0"/>
+      <arg name="y_pos" default="0.0"/>
+      <arg name="z_pos" default="0.0"/>
+      <arg name="robot_name"  value="Robot1" />
+    </include>
+  </group>
+  <!-- <group ns="robot2">
+    <param name="tf_prefix" value="robot2_tf" />
+    <include file="$(find turtlebot3_gazebo)/launch/tb3.launch" >
+      <arg name="x_pos" default="-1.0"/>
+      <arg name="y_pos" default="-1.0"/>
+      <arg name="z_pos" default="0.0"/>
+      <arg name="robot_name"  value="Robot2" />
+    </include>
+  </group> -->
+  
+  <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find tb3_race)/urdf/redball.urdf -urdf -x 0 -y 1 -z 0.8 -model redball" /> -->
+  <!-- <param name="race_ball" textfile="$(find tb3_race)/urdf/redball.urdf"/> -->
+  <param name="red_ball" command="$(find xacro)/xacro.py $(find tb3_race)/urdf/redball.urdf.xacro" />
+  <node name="redball_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 1.5 -y 0 -z 0.8 -param red_ball -model Raceball1" />
+  <!-- <node name="redball_2" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0 -y 0.5 -z 0.8 -param red_ball -model Raceball2" />
+  <node name="redball_3" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0 -y 0 -z 0.8 -param red_ball -model Raceball3" /> -->
+  
+  <!-- <param name="black_ball" command="$(find xacro)/xacro.py $(find tb3_race)/urdf/blackball.urdf.xacro" />
+  <node name="blackball_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0.3 -y 1 -z 0.8 -param black_ball -model Raceball4" />
+  <node name="blackball_2" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0.3 -y 0.5 -z 0.8 -param black_ball -model Raceball5" />
+  <node name="blackball_3" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0.3 -y 0 -z 0.8 -param black_ball -model Raceball6" /> -->
+
+  <!-- <param name="blue_ball" command="$(find xacro)/xacro.py $(find tb3_race)/urdf/blueball.urdf.xacro" />
+  <node name="blueball_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0.6 -y 1 -z 0.8 -param blue_ball -model Raceball7" />
+  <node name="blueball_2" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0.6 -y 0.5 -z 0.8 -param blue_ball -model Raceball8" />
+  <node name="blueball_3" pkg="gazebo_ros" type="spawn_model" args="-urdf -x 0.6 -y 0 -z 0.8 -param blue_ball -model Raceball9" /> -->
+
+  <!-- <param name="yellow_ball" command="$(find xacro)/xacro.py $(find tb3_race)/urdf/yellowball.urdf.xacro" />
+  <node name="yellowball_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -x -0.3 -y 1 -z 0.8 -param yellow_ball -model Raceball10" />
+  <node name="yellowball_2" pkg="gazebo_ros" type="spawn_model" args="-urdf -x -0.3 -y 0.5 -z 0.8 -param yellow_ball -model Raceball11" />
+  <node name="yellowball_3" pkg="gazebo_ros" type="spawn_model" args="-urdf -x -0.3 -y 0 -z 0.8 -param yellow_ball -model Raceball12" /> -->
+
+  <!-- <param name="white_ball" command="$(find xacro)/xacro.py $(find tb3_race)/urdf/whiteball.urdf.xacro" />
+  <node name="whiteball_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -x -0.6 -y 1 -z 0.8 -param white_ball -model Raceball13" />
+  <node name="whiteball_2" pkg="gazebo_ros" type="spawn_model" args="-urdf -x -0.6 -y 0.5 -z 0.8 -param white_ball -model Raceball14" />
+  <node name="whiteball_3" pkg="gazebo_ros" type="spawn_model" args="-urdf -x -0.6 -y 0 -z 0.8 -param white_ball -model Raceball15" /> -->
+</launch>

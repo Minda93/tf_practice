@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="hiworld">
+    <include>
+      <uri>model://dark_ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://dark_sun</uri>
+    </include>
+    <!-- <include>
+      <uri>model://soccer</uri>
+      <pose>1 0 0.1 0 0 0</pose>
+      <name>soccer</name>
+    </include> -->
+    <!-- <include>
+      <uri>model://blue_goal</uri>
+      <pose>3.35 -0.92 0 0 0 3.14</pose>
+      <name>BlueGoal</name>
+    </include> -->
+    <!-- <include>
+      <uri>model://yellow_goal</uri>
+      <pose>-3.35 -0.48  0 0 0 0</pose>
+      <name>YellowGoal</name>
+    </include> -->
+    <include>
+      <uri>model://fira_ground</uri>
+    </include>
+    <include>
+      <uri>model://race_goal</uri>
+      <pose>13.25 0.65 0 1.57 0 -1.57</pose>
+      <name>RaceGoal</name>
+    </include>
+    <!-- ball -->
+    
+     <!-- <include>
+      <uri>model://race_redball</uri>
+      <pose>0 1 0.1 0 0 0</pose>
+      <name>Raceball1</name>
+    </include> -->
+    
+    <!-- <include>
+      <uri>model://race_redball</uri>
+      <pose>0 0.5 0.1 0 0 0</pose>
+      <name>Raceball2</name>
+    </include>
+    <include>
+      <uri>model://race_redball</uri>
+      <pose>0 0 0.1 0 0 0</pose>
+      <name>Raceball3</name>
+    </include> -->
+
+    <!-- <include>
+      <uri>model://race_blackball</uri>
+      <pose>0.3 1 0.1 0 0 0</pose>
+      <name>Raceball4</name>
+    </include>
+    <include>
+      <uri>model://race_blackball</uri>
+      <pose>0.3 0.5 0.1 0 0 0</pose>
+      <name>Raceball5</name>
+    </include>
+    <include>
+      <uri>model://race_blackball</uri>
+      <pose>0.3 0 0.1 0 0 0</pose>
+      <name>Raceball6</name>
+    </include> -->
+
+    <!-- <include>
+      <uri>model://race_blueball</uri>
+      <pose>0.6 1 0.1 0 0 0</pose>
+      <name>Raceball7</name>
+    </include>
+    <include>
+      <uri>model://race_blueball</uri>
+      <pose>0.6 0.5 0.1 0 0 0</pose>
+      <name>Raceball8</name>
+    </include>
+    <include>
+      <uri>model://race_blueball</uri>
+      <pose>0.6 0 0.1 0 0 0</pose>
+      <name>Raceball9</name>
+    </include> -->
+   
+    <!-- <include>
+      <uri>model://race_yellowball</uri>
+      <pose>-0.3 1 0.1 0 0 0</pose>
+      <name>Raceball10</name>
+    </include>
+    <include>
+      <uri>model://race_yellowball</uri>
+      <pose>-0.3 0.5 0.1 0 0 0</pose>
+      <name>Raceball11</name>
+    </include>
+    <include>
+      <uri>model://race_yellowball</uri>
+      <pose>-0.3 0 0.1 0 0 0</pose>
+      <name>Raceball12</name>
+    </include> -->
+    
+    <!-- <include>
+      <uri>model://race_whiteball</uri>
+      <pose>-0.6 1 0.1 0 0 0</pose>
+      <name>Raceball13</name>
+    </include>
+    <include>
+      <uri>model://race_whiteball</uri>
+      <pose>-0.6 0.5 0.1 0 0 0</pose>
+      <name>Raceball14</name>
+    </include>
+    <include>
+      <uri>model://race_whiteball</uri>
+      <pose>-0.6 0 0.1 0 0 0</pose>
+      <name>Raceball15</name>
+    </include> -->
+    <!--  -->
+    <light name="light_point1"  type="point">
+      <pose>  -3 1 1 0 0 0</pose>
+    </light>
+    <!--<light name="light_point3"  type="point">
+      <pose>   0 1 1 0 0 0</pose>
+    </light>
+    <light name="light_point5"  type="point">
+      <pose>  3  1 1 0 0 0</pose>
+    </light>
+    <light name="light_point6"  type="point">
+      <pose>  -3 -1 1 0 0 0</pose>
+    </light>
+    <light name="light_point8"  type="point">
+      <pose>   0 -1 1 0 0 0</pose>
+    </light>-->
+    <light name="light_point10"  type="point">
+      <pose>  3 -1 1 0 0 0</pose>
+    </light>
+
+	<plugin filename="libFIRA_world_plugin.so"  name="FIRA_world_plugin" />
+  </world>
+  <!---<plugin name="model_push" filename="libmodel_push.so" />-->
+</sdf>

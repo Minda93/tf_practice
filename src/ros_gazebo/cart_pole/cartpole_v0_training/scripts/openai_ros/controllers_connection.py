@@ -78,4 +78,4 @@ class ControllersConnection():
 
     def update_controllers_list(self, new_controllers_list):
 
-        self.controllers_list = new_controllers_list
+        self.controllers_list = new_controllers_list_
